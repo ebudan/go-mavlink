@@ -1,19 +1,22 @@
-#go-mavlink
+# go-mavlink
 
+This is a fork of [ungerik's MAVLink protocol Go implementation](https://github.com/ungerik/go-mavlink).
 
-go impletation of the MAVLink protocol.
-```text
+```
+text
 MAVLink or Micro Air Vehicle Link is a protocol for communicating with small unmanned vehicle. It's designed as a header-only message marshaling library. MAVLink was first released early 2009 by Lorenz Meier under LGPL license.
 ```
+
 This implementation is mainly inspired by the C version (see [on GitHub](https://github.com/mavlink/qgroundcontrol/tree/master/libs/mavlink/include/mavlink/v1.0)).
 Only tested under Unix
 
 
-#Usage
+# Usage
 
 Here two quick examples to understand how to deal with it but first, look at the MavPacket definition.
 
-###MavPacket definition :
+### MavPacket definition :
+
 ```go
 type Message interface {
         ID() uint8
@@ -40,7 +43,7 @@ type MavPacket struct {
 You got all the message definitions in message.go.
 
 
-##UDP communication (receiving example)
+## UDP communication (receiving example)
 
 
 ```go
@@ -73,14 +76,14 @@ func main() {
 	}
 }
 ```
+
 The C server is available [here](https://github.com/mavlink/mavlink/tree/master/examples/linux), you can also test it by hand...
+
 ```bash
 $ echo -ne "\xfe\x09\x0\x01\xC8\x00\x0\x0\x0\x0\x0\x0\x0\x0\x0\x5A\x3E" | nc -u 127.0.0.1 14550
 ```
 
-
-
-##Serial communication (Sending example)
+## Serial communication (Sending example)
 ```go
 import (
 	"github.com/tarm/goserial"
@@ -102,24 +105,23 @@ func main() {
 }
 ```
 
-##More
+## More
 The operation is simple : get the MavParser and then, parse each received byte untill you get a non-nil pointer pointing to the full MavPacket.
 
 Please read `main_udp.go` and `main_serial.go` if you want the full code examples.
 
 
-
-#TO-DO
+# TO-DO
 * For now, only the received packet has its own checksum computed on the go
 * Verify if all properties of each message is in its own place (see [Mavlink generator](http://www.qgroundcontrol.org/mavlink/generator))
 
 
-#See
+# See
 * [Mavlink documentation](https://pixhawk.ethz.ch/mavlink/)
 * [QGroundControl](http://www.qgroundcontrol.org/mavlink/start)
 
 
-#Authors
+# Authors
 
 [ungerik]: https://github.com/ungerik
 [sabmit]: http://github.com/sabmit
