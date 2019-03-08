@@ -125,6 +125,9 @@ func parseCrc1(c byte, pInternal *MavPacketInternal) (parserState, error) {
 	pInternal.rawBuffer.WriteByte(c)
 
 	if mavlink_crc_extra_enabled {
+	   	if pInternal.packet.Msg == nil {
+		   return mavlink_parse_state_idle, ErrInvalidChecksum(c)
+		}
 		pInternal.packet.crcAccumulate(messageCrcs[pInternal.packet.Msg.ID()])
 	}
 	if c == uint8(pInternal.packet.Checksum&0xFF) {
