@@ -123,5 +123,6 @@ Please read `main_udp.go` and `main_serial.go` if you want the full code example
 
 # Authors
 
-[ungerik]: https://github.com/ungerik
-[sabmit]: http://github.com/sabmit
+[ungerik](https://github.com/ungerik)  
+[sabmit](http://github.com/sabmit)
+
