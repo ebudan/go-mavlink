@@ -1,6 +1,6 @@
 # go-mavlink
 
-This is a fork of [ungerik's MAVLink protocol Go implementation](https://github.com/ungerik/go-mavlink).
+This is a fork of [ungerik's MAVLink protocol Go implementation](https://github.com/ungerik/go-mavlink) that fixes a panic condition upon first run after reboot with serial link connected PX4.
 
 ```
 text
